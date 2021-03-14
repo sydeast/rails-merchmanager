@@ -13,6 +13,7 @@ Rails.application.routes.draw do
  delete '/logout' => 'sessions#destroy'
 
  #Built-in
+  resources :artists
   resources :users
 
 

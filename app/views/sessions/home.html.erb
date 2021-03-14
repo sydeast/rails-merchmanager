@@ -1,0 +1,21 @@
+<% if !logged_in?%>
+
+<div>
+
+    <h1>Please Login or Register below</h1>
+
+</div>
+
+<div>
+    <%= link_to "Register Here" , signup_path %>
+        <br>
+    <%= link_to "Log In Here" , login_path %>
+</div>
+
+<% else %>
+
+<h1>This is the Homepage</h1>
+
+<p>Use the nav bar to do something now!</p>
+
+<% end %>

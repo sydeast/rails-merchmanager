@@ -49,4 +49,7 @@ name - string
 Things to Do:
 * Check user auth :has secure password
 * fix user validation on artist/photocard deletions
+* hide edit & delete if not the owner
 * Need to create public view of artists
+* Fix the birthday displayed on artists show
+* Fix show/index redirects to see our own items

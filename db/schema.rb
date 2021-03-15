@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_14_221028) do
+ActiveRecord::Schema.define(version: 2021_03_15_002554) do
 
   create_table "artists", force: :cascade do |t|
     t.string "name"
@@ -26,6 +26,23 @@ ActiveRecord::Schema.define(version: 2021_03_14_221028) do
     t.index ["user_id"], name: "index_artists_on_user_id"
   end
 
+  create_table "photocards", force: :cascade do |t|
+    t.string "title"
+    t.string "print_type"
+    t.string "source_type"
+    t.string "source_name"
+    t.string "card_type"
+    t.integer "card_num"
+    t.integer "card_setnum"
+    t.string "card_notes"
+    t.integer "user_id", null: false
+    t.integer "artist_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["artist_id"], name: "index_photocards_on_artist_id"
+    t.index ["user_id"], name: "index_photocards_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -35,4 +52,6 @@ ActiveRecord::Schema.define(version: 2021_03_14_221028) do
   end
 
   add_foreign_key "artists", "users"
+  add_foreign_key "photocards", "artists"
+  add_foreign_key "photocards", "users"
 end

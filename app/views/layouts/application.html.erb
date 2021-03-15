@@ -15,6 +15,8 @@
       <% if logged_in?%>
       <%= link_to "See All Your Artists" , artists_path %> |
       <%= link_to "Create New Artist" , new_artist_path %> |
+      <%= link_to "See All Your Photocards" , photocards_path %> |
+      <%= link_to "Create New Photocard" , new_photocard_path %> |
       <%= link_to "Logout" , logout_path, method: "delete" %> |
       <% else %>
       <%= link_to "Register Here" , signup_path %> |

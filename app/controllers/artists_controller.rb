@@ -19,7 +19,7 @@ class ArtistsController < ApplicationController
         @artist = current_user.artists.build(artist_params)
         @artist.age = ((Time.zone.now - @artist.birth_date.to_time) / 1.year.seconds).floor
         if @artist.save
-            redirect_to artists_path
+            redirect_to artist_path(@artist)
         else
             render :new
         end

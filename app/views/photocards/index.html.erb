@@ -1,0 +1,9 @@
+<h1> All Photocard</h1>
+
+<ul>
+    <% @photocards.each do |p|%>
+        <li>
+            <%= link_to p.title, photocard_path(p) %>
+        </li>
+        <% end %>
+</ul>

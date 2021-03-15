@@ -1,0 +1,17 @@
+<h1><%= @photocard.title %></h1>
+
+
+<p>Artist: <%= @photocard.artist.name %></p>
+<p>Card Number: <%= @photocard.card_num %> of <%= @photocard.card_setnum %></p>
+<p>Photocard Type: <%= @photocard.card_type %></p>
+<p>Print Type: <%= @photocard.print_type %></p>
+<p>Source: <%= @photocard.source_type %></p>
+<p>Source Name: <%= @photocard.source_name %></p>
+<p>Notes: <%= @photocard.card_notes %></p>
+
+<br>
+<br>
+
+<%= link_to "Edit Photocard" , edit_photocard_path(@photocard) %>
+
+

@@ -18,6 +18,7 @@ class ArtistsController < ApplicationController
     def create
         @artist = current_user.artists.build(artist_params)
         @artist.age = ((Time.zone.now - @artist.birth_date.to_time) / 1.year.seconds).floor
+        # ^^creates an age based off DOB and rounds down to the nearest year`
         if @artist.save
             redirect_to artist_path(@artist)
         else

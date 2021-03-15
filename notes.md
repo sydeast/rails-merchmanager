@@ -43,3 +43,10 @@ has_many :artists
 has_many :users, through: :artists
 has_many :photocards, through: :artists
 name - string
+
+
+
+Things to Do:
+* Check user auth :has secure password
+* fix user validation on artist/photocard deletions
+* Need to create public view of artists

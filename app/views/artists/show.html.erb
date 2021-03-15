@@ -8,6 +8,15 @@
 <p>Position: <%= @artist.position %></p>
 <p>Company: <%= @artist.company %></p>
 <p>Notes: <%= @artist.artist_notes %></p>
-
+<p>
+    <%= @artist.name.capitalize %>'s Photocards:
+        <ul>
+            <% @artist.photocards.each do |p|%>
+                <li>
+                    <%= link_to p.title, photocard_path(p) %>
+                </li>
+                <% end %>
+        </ul>
+</p>
 
 <%= link_to "Edit Artist" , edit_artist_path(@artist) %>

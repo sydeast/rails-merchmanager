@@ -2,17 +2,16 @@ class ArtistsController < ApplicationController
     before_action :redirect_if_not_logged_in
 
     def index
-        if params[:user_id] && @user = User.find_by_id(params[:user_id]) # then its nested
-            @artists = @user.artists
-        else
-            @error = "Oops. An error occurred. You are now seeing all artists." if params[:user_id]
-            @artists = Artist.all
-        end
+        @artists = current_user.artists.order(:name)
     end
 
 
     def new
-        @artist = Artist.new
+        if params[:user_id] && @user = User.find_by_id(params[:user_id])
+            @artist = @user.artists.build
+        else
+            @artist = Artist.new
+        end
     end
 
     def create
@@ -33,12 +32,12 @@ class ArtistsController < ApplicationController
 
     def edit
         @artist = Artist.find_by_id(params[:id])
-        redirect_to artists_path if !@artist
+        redirect_to artists_path if !@artist || @artist.user != current_user
     end
 
     def update
         @artist = Artist.find_by_id(params[:id])
-        redirect_to artists_path if !@artist
+        redirect_to artists_path if !@artist || @artist.user != current_user
         if @artist.update(artist_params)
             redirect_to artist_path(@artist)
         else

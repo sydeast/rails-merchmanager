@@ -2,7 +2,7 @@ class PhotocardsController < ApplicationController
     before_action :redirect_if_not_logged_in
 
     def index
-        if params[:user_id] && @user = User.find_by_id(params[:user_id]) # then its nested
+        if params[:user_id] && current_user
             @photocards = @user.photocards
         else
             flash[:message] = "Oops. An error occurred. You are routed back to your page." if params[:user_id]
@@ -11,7 +11,12 @@ class PhotocardsController < ApplicationController
     end
 
     def new
-        @photocard = Photocard.new
+        if params[:artist_id] && @artist = Artist.find_by_id(params[:artist_id])
+            @photocard = @artist.photocards.build
+        else
+            @error = "Oops, we could not find that artist." if params[:artist_id]
+            @photocard = Photocard.new
+        end
     end
 
     def create

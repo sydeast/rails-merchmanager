@@ -25,9 +25,10 @@
     </div>
     <div class="error-handling">
       <% if flash[:message]%>
-      <%= flash[:message]%>
+        <%= flash[:message]%>
       <% end %>
-      <%= @error %>
+        <%= @error %>
+        
     </div>
     <%= yield %>
   </body>

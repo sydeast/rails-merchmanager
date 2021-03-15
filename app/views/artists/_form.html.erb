@@ -1,0 +1,29 @@
+<%= form_for(artist) do |f| %>
+
+<%= f.label :name %>
+<%= f.text_field :name, required: true%>
+<br>
+<br>
+<%= f.label :birth_date %>
+<%= f.date_select :birth_date, start_year: Date.today.year - 50, end_year: Date.today.year - 5 %>
+<br>
+<br>
+<%= f.label :other_name, "Stagename and/or Group name:" %>
+<%= f.text_field :other_name %>
+<br>
+<br>
+<%= f.label :position %>
+<%= f.text_field :position %>
+<br>
+<br>
+<%= f.label :company %>
+<%= f.text_field :company %>
+<br>
+<br>
+<%= f.label :artist_notes, "Notes:" %>
+<%= f.text_area :artist_notes %>
+<br>
+<br>
+<%= f.submit %>
+<br>
+<% end %>

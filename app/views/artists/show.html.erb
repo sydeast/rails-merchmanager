@@ -1,0 +1,14 @@
+<h1>
+    <%= @artist.name.capitalize %>'s Profile
+</h1>
+
+<p>Age: <%= @artist.age %></p>
+<p>Birthday: <%= @artist.birth_date.to_formatted_s(:long_ordinal) %></p>
+<p>Other Name: <%= @artist.other_name %></p>
+<p>Position: <%= @artist.position %></p>
+<p>Company: <%= @artist.company %></p>
+<p>Notes: <%= @artist.artist_notes %></p>
+
+
+<%= link_to "Edit Artist" , edit_artist_path(@artist) %>
+<%= link_to "Delete Artist" , artist_path(@artist), method: "delete" %>

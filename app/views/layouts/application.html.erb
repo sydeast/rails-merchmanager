@@ -11,6 +11,22 @@
   </head>
 
   <body>
+    <div class="nav-bar">
+      <% if logged_in?%>
+      <%= link_to "See All Your Artists" , artists_path %> |
+      <%= link_to "Create New Artist" , new_artist_path %> |
+      <%= link_to "Logout" , logout_path, method: "delete" %> |
+      <% else %>
+      <%= link_to "Register Here" , signup_path %> |
+      <%= link_to "Log In Here" , login_path %> |
+      <% end %>
+    </div>
+    <div class="error-handling">
+      <% if flash[:message]%>
+      <%= flash[:message]%>
+      <% end %>
+      <%= @error %>
+    </div>
     <%= yield %>
   </body>
 </html>

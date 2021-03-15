@@ -1,6 +1,6 @@
 class Artist < ApplicationRecord
   belongs_to :user
-  has_many :photocards
+  has_many :photocards, through: :user
 
 
 end

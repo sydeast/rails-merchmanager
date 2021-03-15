@@ -12,6 +12,7 @@ class ArtistsController < ApplicationController
         else
             @artist = Artist.new
         end
+        @artist.build_album
     end
 
     def create
@@ -55,6 +56,6 @@ class ArtistsController < ApplicationController
 
     private
     def artist_params
-        params.require(:artist).permit(:name, :birth_date, :other_name, :age, :position, :company, :artist_notes)
+        params.require(:artist).permit(:name, :birth_date, :other_name, :age, :position, :company, :artist_notes, :album_id, album_attributes: [:title, :release_date])
     end
 end

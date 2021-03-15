@@ -20,6 +20,16 @@
 <%= f.text_field :company %>
 <br>
 <br>
+<%= f.label "Add an album:" %>
+<%= f.collection_select :album_id, Album.all, :id, :title, include_blank: true %>
+    <p>Or create a new album:
+    <%= f.fields_for :album do |a|%>
+    <%= a.text_field :title%>
+    <%= a.date_field :release_date%>
+    <% end %>
+    </p>
+<br>
+<br>
 <%= f.label :artist_notes, "Notes:" %>
 <%= f.text_area :artist_notes %>
 <br>

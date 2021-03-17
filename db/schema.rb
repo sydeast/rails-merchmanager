@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2021_03_15_043656) do
 
   create_table "artists", force: :cascade do |t|
     t.string "name"
-    t.datetime "birth_date"
+    t.date "birth_date"
     t.integer "age"
     t.string "other_name"
     t.string "position"

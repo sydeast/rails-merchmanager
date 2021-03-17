@@ -7,16 +7,7 @@
 <p>Other Name: <%= @artist.other_name %></p>
 <p>Position: <%= @artist.position %></p>
 <p>Company: <%= @artist.company %></p>
-<p><%= @artist.name.capitalize %>'s Albums:
-
-    <ul>
-        <% @artist.albums.each do |a|%>
-        <li>
-        <%= a.title %>
-        </li>
-        <% end %>
-    </ul>
-<p>
+<p>Your favorite album: <%= @artist.album.title %> - released: <%= @artist.album.release_date %> <p>
     <%= @artist.name.capitalize %>'s Photocards:
         <ul>
             <% @artist.photocards.each do |p|%>

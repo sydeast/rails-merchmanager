@@ -7,7 +7,15 @@
 <p>Other Name: <%= @artist.other_name %></p>
 <p>Position: <%= @artist.position %></p>
 <p>Company: <%= @artist.company %></p>
-<p>Notes: <%= @artist.artist_notes %></p>
+<p><%= @artist.name.capitalize %>'s Albums:
+
+    <ul>
+        <% @artist.albums.each do |a|%>
+        <li>
+        <%= a.title %>
+        </li>
+        <% end %>
+    </ul>
 <p>
     <%= @artist.name.capitalize %>'s Photocards:
         <ul>
@@ -17,6 +25,9 @@
                 </li>
                 <% end %>
         </ul>
+</p>
+
+<p>Notes: <%= @artist.artist_notes %>
 </p>
 
 <%= link_to "Edit Artist" , edit_artist_path(@artist) %>

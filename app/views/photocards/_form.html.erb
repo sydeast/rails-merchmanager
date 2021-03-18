@@ -1,15 +1,14 @@
+<div>
 <%= form_for(photocard) do |f| %>
 
 <%= f.label :title %>
-<%= f.text_field :title %>
+<%= f.text_field :title, required: true %>
 <br>
 <br>
-<p>Note: Only Artists you have previously created will appear here. If the idol you need is not listed, you
-will need to
-create them first.</p>
-<%= f.label :artist%>
+<div data-toggle="tooltip" data-placement="top" title="Only Artists you have previously created will appear here. If the idol you need is not listed, you will need to create them first.">
+<%= f.label :artist %>
 <%= f.collection_select :artist_id, current_user.artists, :id, :name, required: true %>
-<br>
+</div>
 <br>
 <%= f.label :card_setnum, "How many cards in the set?" %>
 <%= f.number_field :card_setnum, in: 1..15, step: 1 %>
@@ -35,10 +34,17 @@ create them first.</p>
 <%= f.text_field :source_name %>
 <br>
 <br>
-<%= f.label :card_notes, "Notes about the photocard?:" %>
+<%= f.label:card_notes, "Notes about the photocard?" %>
 <%= f.text_area :card_notes %>
 <br>
 <br>
 <%= f.submit %>
 
 <% end %>
+</div>
+
+<script>
+$(function () {
+$('[data-toggle="tooltip"]').tooltip()
+})
+</script>

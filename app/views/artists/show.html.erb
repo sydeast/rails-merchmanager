@@ -8,15 +8,19 @@
 <p>Other Name: <%= @artist.other_name %></p>
 <p>Position: <%= @artist.position %></p>
 <p>Company: <%= @artist.company %></p>
-<p>Your favorite album: <%= @artist.album.title %> - released: <%= @artist.album.release_date %> <p>
+<p>Your favorite album: <%= @artist.album.title %> - released: <%= @artist.album.release_date %> </p>
+
+<p>
+    <% if !@artist.photocards.empty? %>
     <%= @artist.name.capitalize %>'s Photocards:
         <ul>
             <% @artist.photocards.each do |p|%>
                 <li>
-                    <%= link_to p.title, photocard_path(p) %>
+                    <%= link_to p.title, artist_photocard_path(@artist, p) %>
                 </li>
                 <% end %>
         </ul>
+    <% end %>
 </p>
 
 <button onclick='addPhotocard()'> Add a new photocard?</button>

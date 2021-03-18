@@ -18,19 +18,27 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-dark navbar-expand">
+    <nav class="navbar navbar-dark navbar-expand-sm fixed-top">
       <div class="container">
-      <% if logged_in?%>
-      <%= link_to "Home" , root_path %> |
-      <%= link_to "See All Your Artists" , artists_path %> |
-      <%= link_to "Create New Artist" , new_artist_path %> |
-      <%= link_to "See All Your Photocards" , photocards_path %> |
-      <%= link_to "Create New Photocard" , new_photocard_path %> |
-      <%= link_to "Logout" , logout_path, method: "delete" %> |
-      <% else %>
-      <%= link_to "Register Here" , signup_path %> |
-      <%= link_to "Log In Here" , login_path %> |
-      <% end %>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+          <div class="collapse navbar-collapse" id="Navbar">
+            <ul class="navbar-nav mr-auto">
+              <% if logged_in?%>
+                <li class="nav-item"><%= link_to "Home" , root_path %> |</li>
+                <li class="nav-item"><%= link_to "See All Your Artists" , artists_path %> |</li>
+                <li class="nav-item"><%= link_to "Create New Artist" , new_artist_path %> |</li>
+                <li class="nav-item"><%= link_to "See All Your Photocards" , photocards_path %> |</li>
+                <li class="nav-item"><%= link_to "Create New Photocard" , new_photocard_path %> |</li>
+                <li class="nav-item"><%= link_to "Logout" , logout_path, method: "delete" %> |</li>
+              <% else %>
+                <li class="nav-item"><%= link_to "Register Here" , signup_path %> |</li>
+                <li class="nav-item"><%= link_to "Log In Here" , login_path %> |</li>
+              <% end %>
+            </ul>
+          </div>
       </div>
     </nav>
     <div class="error-handling">
@@ -40,6 +48,7 @@
         <%= @error %>
 
     </div>
+
     <%= yield %>
 
     <!-- Optional JavaScript -->

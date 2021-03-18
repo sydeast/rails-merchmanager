@@ -13,3 +13,10 @@
  *= require_tree .
  *= require_self
  */
+#photocardForm {
+  display:none;
+}
+
+/*
+ *= require jquery-ui
+ */

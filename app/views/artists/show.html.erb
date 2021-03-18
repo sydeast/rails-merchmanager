@@ -1,3 +1,4 @@
+
 <h1>
     <%= @artist.name.capitalize %>'s Profile
 </h1>
@@ -18,7 +19,21 @@
         </ul>
 </p>
 
+<button onclick='addPhotocard()'> Add a new photocard?</button>
+<br>
+<br>
+<div id="photocardForm">
+    <%= render "photocards/artists/form" %>
+</div>
+
+
 <p>Notes: <%= @artist.artist_notes %>
 </p>
 
 <%= link_to "Edit Artist" , edit_artist_path(@artist) %>
+
+    <script>
+        function addPhotocard() {
+            $('#photocardForm').show();
+        };
+    </script>

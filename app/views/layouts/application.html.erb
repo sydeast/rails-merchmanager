@@ -39,6 +39,14 @@
               <% end %>
             </ul>
           </div>
+          <div class="navbar-nav ml-auto">
+            <% if logged_in? %>
+              <li class="nav-item"> | <%= link_to "Account Settings" , user_path(current_user) %> </li>
+            <% else %>
+              <li class="nav-item">| Hi! Join us today!</li>
+            <% end %>
+          </div>
+
       </div>
     </nav>
     <div class="error-handling">

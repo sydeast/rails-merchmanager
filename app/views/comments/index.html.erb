@@ -1,0 +1,10 @@
+<h1>All Comments</h1>
+
+<div>
+    <ul>
+        <% @comments.each do |c| %>
+            <li><%= c.user.name%> says "<%=c.content%>" about this post: <%=link_to c.post.title, post_path(c.post_id) %></li>
+            <% end %>
+    </ul>
+
+</div>

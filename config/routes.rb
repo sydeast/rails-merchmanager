@@ -13,13 +13,14 @@ Rails.application.routes.draw do
  delete '/logout' => 'sessions#destroy'
 
  #Built-in
-
+  resources :posts
   resources :artists do
     resources :photocards
   end
   resources :photocards
   resources :users do
     resources :artists, shallow: true
+    resources :posts, shallow: true
   end
   resources :albums, only: [:index, :show]
 

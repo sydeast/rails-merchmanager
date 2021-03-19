@@ -1,0 +1,21 @@
+<div>
+    <h1><%= @post.title%></h1>
+    <h3> By: <%= @post.user.name.capitalize %></h3>
+
+    <div>
+        <%= @post.content%>
+    </div>
+<br>
+<br>
+<br>
+    <p><%= link_to 'See All Comments', post_comments_path(@post)%></p>
+    <p><%= link_to 'Add New Comment' , new_post_comment_path(@post)%></p>
+    <div>
+        <p>Comments:</p>
+        <ol>
+        <% @post.comments.each do |c|%>
+            <li><strong><%= c.user.name%> </strong> says "<%= link_to c.content, comment_path(c)%>" </li>
+            <% end %>
+        </ol>
+    </div>
+</div>

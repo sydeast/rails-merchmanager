@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_15_043656) do
+ActiveRecord::Schema.define(version: 2021_03_19_182942) do
 
   create_table "albums", force: :cascade do |t|
     t.string "title"
@@ -52,6 +52,15 @@ ActiveRecord::Schema.define(version: 2021_03_15_043656) do
     t.index ["user_id"], name: "index_photocards_on_user_id"
   end
 
+  create_table "posts", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -64,4 +73,5 @@ ActiveRecord::Schema.define(version: 2021_03_15_043656) do
   add_foreign_key "artists", "users"
   add_foreign_key "photocards", "artists"
   add_foreign_key "photocards", "users"
+  add_foreign_key "posts", "users"
 end

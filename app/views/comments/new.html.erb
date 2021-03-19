@@ -9,7 +9,7 @@
 
 
 <div>
-    <%= form_for([@comment.post,@comment]) do |f| %>
+    <%= form_for([@comment.post, @comment], :url => post_comments_path) do |f| %>
 
     <% if !@comment.post %>
         <%= f.label :post %>

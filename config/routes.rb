@@ -13,9 +13,8 @@ Rails.application.routes.draw do
  delete '/logout' => 'sessions#destroy'
 
  #Built-in
-  resources :comments
   resources :posts do
-    resources :comments
+    resources :comments, shallow: true
   end
   resources :artists do
     resources :photocards

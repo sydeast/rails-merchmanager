@@ -8,14 +8,24 @@
 <br>
 <br>
 <br>
-    <p><%= link_to 'See All Comments', post_comments_path(@post)%></p>
-    <p><%= link_to 'Add New Comment' , new_post_comment_path(@post)%></p>
+
+    <% if !@post.comments.empty? %>
     <div>
         <p>Comments:</p>
         <ol>
         <% @post.comments.each do |c|%>
-            <li><strong><%= c.user.name%> </strong> says "<%= link_to c.content, comment_path(c)%>" </li>
+            <li><strong><%= c.user.name%> </strong> says "<%=c.content %>" </li>
             <% end %>
         </ol>
+        <p>
+            <%= link_to 'See All Comments' , post_comments_path(@post)%>
+        </p>
     </div>
+    <% end %>
+
+
+<h4>Add a comment:</h4>
+<%= render 'comments/form', post: @post, user: current_user %>
+
+
 </div>

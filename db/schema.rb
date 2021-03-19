@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_19_182942) do
+ActiveRecord::Schema.define(version: 2021_03_19_184034) do
 
   create_table "albums", force: :cascade do |t|
     t.string "title"
@@ -33,6 +33,16 @@ ActiveRecord::Schema.define(version: 2021_03_19_182942) do
     t.integer "album_id", null: false
     t.index ["album_id"], name: "index_artists_on_album_id"
     t.index ["user_id"], name: "index_artists_on_user_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string "content"
+    t.integer "user_id", null: false
+    t.integer "post_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_comments_on_post_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "photocards", force: :cascade do |t|
@@ -71,6 +81,8 @@ ActiveRecord::Schema.define(version: 2021_03_19_182942) do
 
   add_foreign_key "artists", "albums"
   add_foreign_key "artists", "users"
+  add_foreign_key "comments", "posts"
+  add_foreign_key "comments", "users"
   add_foreign_key "photocards", "artists"
   add_foreign_key "photocards", "users"
   add_foreign_key "posts", "users"

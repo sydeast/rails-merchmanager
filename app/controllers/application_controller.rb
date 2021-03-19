@@ -9,12 +9,12 @@ class ApplicationController < ActionController::Base
 
     def logged_in?
         !!session[:user_id]
-        #if having issues check the !!current_user this was not included in the original work thru
+    
     end
 
     def redirect_if_not_logged_in
         redirect_to '/' if !logged_in?
     end
 
-    
+
 end

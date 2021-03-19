@@ -16,7 +16,6 @@ Rails.application.routes.draw do
 
   resources :artists do
     resources :photocards
-    resources :albums, shallow: true
   end
   resources :photocards
   resources :users do

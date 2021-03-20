@@ -3,7 +3,7 @@
 <div>
     <ul>
         <% @comments.each do |c| %>
-            <li><%= c.user.name%> says "<%=c.content%>" about this post: <%=link_to c.post.title, post_path(c.post_id) %></li>
+            <li><%= c.user.name%> said "<%=c.content%>" published <%= time_ago_in_words(@post.created_at) %> about this post: <%=link_to c.post.title, post_path(c.post_id) %></li>
             <% end %>
     </ul>
 

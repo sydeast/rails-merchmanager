@@ -1,10 +1,29 @@
-<%= form_with model: [ @post, @post.comments.build ] do |f| %>
-
-<%= f.label :content, "Comment" %>
-<%= f.text_field :content %>
-<%= f.hidden_field :post_id %>
-
-
-<%= f.submit %>
-
+<div>
+<% if @comment.post %>
+<h1>New Comment for <%= @comment.post.title.capitalize %></h1>
+<% else %>
+<h1>New Comment </h1>
 <% end %>
+</div>
+
+
+
+<div>
+    <%= form_for([@comment.post, @comment], :url => post_comments_path) do |f| %>
+
+    <% if !@comment.post %>
+        <%= f.label :post %>
+        <%= f.collection_select :post_id, Post.all, :id, :title %>
+    <% else %>
+        <%= f.hidden_field :post_id %>
+    <% end %>
+
+    <%= f.label :content %>
+    <%= f.text_field :content %>
+
+
+    <%= f.submit %>
+
+    <% end %>
+
+</div>

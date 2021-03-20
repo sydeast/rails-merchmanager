@@ -1,16 +1,14 @@
-<h1>Editing Comments</h1>
+<div>
+    <% if @comment.post %>
+        <h1>New Comment for <%= @comment.post.title.capitalize %></h1>
+    <% else %>
+        <h1>New Comment </h1>
+    <% end %>
+</div>
+
+
 
 <div>
-<%= form_for(@comment) do |f| %>
-
-<%= f.label :post %>
-<%= f.collection_selection :post_id, Post.all, :id, :title %>
-
-<%= f.label :content %>
-<%= f.text_field :content %>
-
-<%= f.submit %>
-
-<% end %>
+    <%= render 'comments/form' %>
 
 </div>

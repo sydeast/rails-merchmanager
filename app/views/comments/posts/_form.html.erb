@@ -1,0 +1,10 @@
+<%= form_with model: [ @post, @post.comments.build ] do |f| %>
+
+<%= f.label :content, "Comment" %>
+<%= f.text_field :content %>
+<%= f.hidden_field :post_id %>
+
+
+<%= f.submit %>
+
+<% end %>

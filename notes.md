@@ -51,3 +51,4 @@ Things to Do:
 * hide edit & delete if not the owner
 * Need to create public view of artists/photocards
 * Fix show/index redirects to see our own items
+

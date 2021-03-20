@@ -1,11 +1,11 @@
 class User < ApplicationRecord
     #Associations
     has_many :artists
-    has_many :photocards
-    has_many :posts
-    has_many :comments
+    has_many :photocards, dependent: :destroy
+    has_many :posts, dependent: :destroy
+    has_many :comments, dependent: :destroy
     has_many :albums, through: :artists, source: :album
-    has_many :commented_posts, through: :comments, source: :post
+    has_many :commented_posts, through: :comments, source: :post, dependent: :destroy
 
     #Validations:
     has_secure_password

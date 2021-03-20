@@ -1,6 +1,6 @@
 <div>
     <h1><%= @post.title%></h1>
-    <h3> By: <%= @post.user.name.capitalize %></h3>
+    <h3> By: <%= @post.user.name.capitalize %>, published <%= time_ago_in_words(@post.created_at) %></h3>
 
     <div>
         <%= @post.content%>
@@ -9,23 +9,33 @@
 <br>
 <br>
 
-    <% if !@post.comments.empty? %>
-    <div>
-        <p>Comments:</p>
-        <ol>
-        <% @post.comments.each do |c|%>
-            <li><strong><%= c.user.name%> </strong> says "<%=c.content %>" </li>
-            <% end %>
-        </ol>
-        <p>
-            <%= link_to 'See All Comments' , post_comments_path(@post)%>
-        </p>
-    </div>
-    <% end %>
 
 
 <h4>Add a comment:</h4>
-<%= render 'comments/form', post: @post, user: current_user %>
+<%= render 'comments/form' , post: @post, user: current_user %>
+<br>
 
+<h4>Comments:</h4>
+    <div>
+
+        <% if @post.comments.any? && !@post.comments[0].new_record? %>
+            <ul>
+            <% @post.comments[0..-2].last(10).reverse.each do |c| %>
+            <li><strong><%= c.user.name%></strong> says "<%= c.content%>" posted <%= time_ago_in_words(c.created_at) %>.</li>
+                <% end %>
+            </ul>
+            <p>
+                <%= link_to 'See All Comments' , post_comments_path(@post)%>
+            </p>
+        <% else %>
+
+        <p> No Comments Yet!</p>
+
+
+        <% end %>
+</div>
+
+
+<%= link_to "Delete Post" , post_path(@post), method: "delete" , data: { confirm: "Are you sure?" } %>
 
 </div>

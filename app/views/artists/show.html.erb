@@ -23,19 +23,23 @@
         </ul>
     <% end %>
 </p>
-
+<% if owner?(@artist) %>
+<div>
 <button onclick='addPhotocard()'> Add a new photocard?</button>
-<br>
 <br>
 <div id="photocardForm">
     <%= render "photocards/artists/form" %>
 </div>
-
-
+</div>
+<% end %>
 <p>Notes: <%= @artist.artist_notes %>
 </p>
 
+<% if owner?(@artist) %>
+<div>
 <%= link_to "Edit Artist" , edit_artist_path(@artist) %>
+</div>
+<% end %>
 
     <script>
         function addPhotocard() {

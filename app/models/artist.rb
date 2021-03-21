@@ -4,7 +4,8 @@ class Artist < ApplicationRecord
   has_many :photocards
 
 
-  scope :noshow, -> { where(status: 'private') }
+  scope :public_viewing, -> { where(status: "public") }
+  scope :listed_by_name, -> { order(:name) }
 
 
   def album_attributes=(attr)

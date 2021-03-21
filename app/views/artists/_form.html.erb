@@ -18,14 +18,17 @@
 <%= f.label :company %>
 <%= f.text_field :company %>
 <br>
+<div data-toggle="tooltip" data-placement="top"
+    title="Please select or create an favorite album to associate with this artist.">
 <%= f.label "What is your favorite album of theirs:" %>
-<%= f.collection_select :album_id, Album.all, :id, :title, include_blank: true %>
+<%= f.collection_select :album_id, Album.all, :id, :title, include_blank: true, required: true %>
     <p>Or create a new album if not listed:
     <%= f.fields_for :album do |a|%>
     <%= a.text_field :title%>
     <%= a.date_field :release_date%>
     <% end %>
     </p>
+</div>
 <br>
 <%= f.label :artist_notes, "Notes:" %>
 <%= f.text_area :artist_notes %>

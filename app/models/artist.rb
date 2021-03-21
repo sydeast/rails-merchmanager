@@ -5,6 +5,7 @@ class Artist < ApplicationRecord
 
 
   scope :public_viewing, -> { where(status: "public") }
+  scope :private_only, -> { where(status: "private") }
   scope :listed_by_name, -> { order(:name) }
 
 

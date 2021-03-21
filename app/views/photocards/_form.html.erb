@@ -5,7 +5,7 @@
 <%= f.text_field :title, required: true %>
 <br>
 <%= f.label :status, "Display Status?" %>
-<%= f.select :status, ['public', 'private'], selected: 'public' %>
+<%= f.select :status, ['public', 'private'] %>
 <div data-toggle="tooltip" data-placement="top" title="Only Artists you have previously created will appear here. If the idol you need is not listed, you will need to create them first.">
 <%= f.label :artist %>
 <%= f.collection_select :artist_id, current_user.artists, :id, :name, required: true %>

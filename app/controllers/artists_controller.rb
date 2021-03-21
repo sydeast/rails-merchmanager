@@ -1,11 +1,14 @@
 class ArtistsController < ApplicationController
     before_action :redirect_if_not_logged_in
+    before_action :owner?, only: %i[edit destroy]
+
+
 
     def index
         if session[:user_id] && current_user && current_user.artists.any?
             @artists = current_user.artists.listed_by_name
         else
-            @error = "Oops, you don't have any Artists yet. You are viewing all public artists. Please click the link above to create an artist now."
+            @error = "Oops, you cannot do that right now. Try creating a new artist or checkout these public artists below."
             @artists = Artist.public_viewing
         end
     end
@@ -33,17 +36,18 @@ class ArtistsController < ApplicationController
 
     def show
         @artist = Artist.find_by_id(params[:id])
+
         redirect_to artists_path if !@artist
     end
 
     def edit
         @artist = Artist.find_by_id(params[:id])
-        redirect_to artists_path if !@artist || @artist.user != current_user
+        redirect_to artists_path if !@artist
     end
 
     def update
         @artist = Artist.find_by_id(params[:id])
-        redirect_to artists_path if !@artist || @artist.user != current_user
+        redirect_to artists_path if !@artist
         if @artist.update(artist_params)
             redirect_to artist_path(@artist)
         else
@@ -63,5 +67,12 @@ class ArtistsController < ApplicationController
     def artist_params
         params.require(:artist).permit(:name, :birth_date, :other_name, :age, :position, :company, :artist_notes, :album_id, :status,album_attributes: [:title, :release_date])
     end
+
+    def owner?
+        if @artist != current_user.artists
+            redirect_back fallback_location: artists_path, notice: 'User is not owner'
+        end
+    end
+
 
 end

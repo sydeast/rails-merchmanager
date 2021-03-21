@@ -4,6 +4,9 @@ module ApplicationHelper
         current_user == object.user
     end
 
+    def private?(object)
+        object.status == "private"
+    end
 
 
 

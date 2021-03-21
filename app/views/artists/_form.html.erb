@@ -3,9 +3,11 @@
 <%= f.label :name %>
 <%= f.text_field :name, required: true%>
 <br>
+<div data-toggle="tooltip" data-placement="top"
+    title="Artist may by default display as public unless marked as 'Private'">
 <%= f.label :status, "Display Status?" %>
 <%= f.select :status, ['public', 'private' ] %>
-<br>
+</div>
 <%= f.label :birth_date %>
 <%= f.date_select :birth_date, start_year: Date.today.year - 40, end_year: Date.today.year - 5 %>
 <br>
@@ -29,9 +31,11 @@
     <% end %>
     </p>
 </div>
-<br>
+<div data-toggle="tooltip" data-placement="top"
+    title="Notes will not be displayed to the public.">
 <%= f.label :artist_notes, "Notes:" %>
 <%= f.text_area :artist_notes %>
+</div>
 <br>
 <%= f.submit %>
 <br>

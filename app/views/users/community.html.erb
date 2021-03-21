@@ -1,4 +1,4 @@
-<h1> Merch Manager's Community </h1>
+<h1> Merch Manager's Community Top Reports</h1>
 
 <div id="Top-users-by-posts">
     <h3>Top Post Makers</h3>
@@ -24,11 +24,17 @@
     </ol>
 </div>
 
-<div id="Top-albums-by-favorites">
-
-</div>
-
 <div id="Top-artists-by-photocards">
-
+    <h3>Artists with Most Photocards</h3>
+    <ol>
+        <% top_artists.each do |a|%>
+            <% if a.photocards.any?%>
+                <li>
+                    <%=a.name%> - <%=a.user.name.capitalize%>: <%=a.photocards.count%> photocards(s)
+                </li>
+                <% end %>
+                    <% end %>
+    </ol>
+    </div>
 </div>
 

@@ -24,4 +24,13 @@ module ApplicationHelper
         end
     end
 
+    def top_artists
+        if Artist.most_photocards.empty?
+            'No artists with photocards yet. Start adding photocards to artists now!'
+        else
+            Artist.most_photocards.limit(10)
+        end
+    end
+
+
 end

@@ -16,4 +16,12 @@ module ApplicationHelper
         end
     end
 
+    def top_posts
+        if Post.most_comments.empty?
+            'No comments posts yet. Start commenting!'
+        else
+            Post.most_comments.limit(10)
+        end
+    end
+
 end

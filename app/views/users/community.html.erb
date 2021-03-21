@@ -14,7 +14,14 @@
 
 
 <div id="Top-posts-by-comments">
-
+    <h3>Most Popular Posts</h3>
+    <ol>
+        <% top_posts.each do |p|%>
+            <% if p.comments.any?%>
+            <li><%=p.title%> - <%=p.user.name.capitalize%>: <%=p.comments.count%> comment(s)</li>
+            <% end %>
+        <% end %>
+    </ol>
 </div>
 
 <div id="Top-albums-by-favorites">

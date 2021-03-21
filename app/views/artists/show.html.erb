@@ -3,6 +3,7 @@
     <%= @artist.name.capitalize %>'s Profile
 </h1>
 
+<p>Display Status: <%= @artist.status %></p>
 <p>Age: <%= @artist.age %></p>
 <p>Birthday: <%= @artist.birth_date.to_formatted_s(:long_ordinal) %></p>
 <p>Other Name: <%= @artist.other_name %></p>

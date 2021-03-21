@@ -2,11 +2,10 @@ class PhotocardsController < ApplicationController
     before_action :redirect_if_not_logged_in
 
     def index
-        if params[:user_id] && current_user
-            @photocards = @user.photocards
+        if session[:user_id] && current_user
+            @photocards = current_user.photocards
         else
-            flash[:message] = "Oops. An error occurred. You are routed back to your page." if params[:user_id]
-            @photocards = Photocard.all
+            @error = "Oops, you don't have any photocards yet. Please click the link above to create some now."
         end
     end
 
@@ -59,7 +58,7 @@ class PhotocardsController < ApplicationController
     private
 
     def photocard_params
-        params.require(:photocard).permit(:title, :print_type, :source_name, :source_type, :card_setnum, :card_num, :card_type, :card_notes, :artist_id)
+        params.require(:photocard).permit(:title, :print_type, :source_name, :source_type, :card_setnum, :card_num, :card_type, :card_notes, :artist_id, :status)
     end
 
 

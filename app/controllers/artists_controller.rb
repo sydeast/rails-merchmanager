@@ -1,8 +1,14 @@
 class ArtistsController < ApplicationController
     before_action :redirect_if_not_logged_in
+    # before_action :redirect_if_not_artist_owner, only: [:edit, :update]
 
     def index
-        @artists = current_user.artists.order(:name)
+        if session[:user_id] && current_user
+            @artists = current_user.artists.order(:name)
+        else
+            @error = "Oops, you don't have any photocards yet. Please click the link above to create some now."
+            @artists = Artist.all
+        end
     end
 
 
@@ -56,6 +62,10 @@ class ArtistsController < ApplicationController
 
     private
     def artist_params
-        params.require(:artist).permit(:name, :birth_date, :other_name, :age, :position, :company, :artist_notes, :album_id, album_attributes: [:title, :release_date])
+        params.require(:artist).permit(:name, :birth_date, :other_name, :age, :position, :company, :artist_notes, :album_id, :status,album_attributes: [:title, :release_date])
     end
+
+    # def redirect_if_not_artist_owner
+    #     redirect_to artists_path if @artist.user != current_user
+    # end
 end

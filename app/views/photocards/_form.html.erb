@@ -4,7 +4,8 @@
 <%= f.label :title %>
 <%= f.text_field :title, required: true %>
 <br>
-<br>
+<%= f.label :status, "Display Status?" %>
+<%= f.select :status, ['public', 'private'], selected: 'public' %>
 <div data-toggle="tooltip" data-placement="top" title="Only Artists you have previously created will appear here. If the idol you need is not listed, you will need to create them first.">
 <%= f.label :artist %>
 <%= f.collection_select :artist_id, current_user.artists, :id, :name, required: true %>
@@ -13,30 +14,23 @@
 <%= f.label :card_setnum, "How many cards in the set?" %>
 <%= f.number_field :card_setnum, in: 1..15, step: 1 %>
 <br>
-<br>
 <%= f.label :card_num %>
 <%= f.text_field :card_num %>
-<br>
 <br>
 <%= f.label :card_type, "What type of photocard?" %>
 <%= f.select :card_type, ["Standard", "Hologram" , "Transparent" , "Polaroid", "Lomo" , "ID" ]%>
 <br>
-<br>
 <%= f.label :print_type %>
 <%= f.select :print_type, ["Official Print", "Unofficial Print", "Reprint" , "Fake" , "Other" ] %>
-<br>
 <br>
 <%= f.label :source_type, "Where did photocard originate?" %>
 <%= f.select :source_type, ["Album", "Broadcast" , "Concert Set", "DVD" , "Fan Club Kit" , "Fan Event" , "Magazine", "Lightstick" , "Other" ] %>
 <br>
-<br>
 <%= f.label :source_name, "Name of originatation?" %>
 <%= f.text_field :source_name %>
 <br>
-<br>
 <%= f.label:card_notes, "Notes about the photocard?" %>
 <%= f.text_area :card_notes %>
-<br>
 <br>
 <%= f.submit %>
 

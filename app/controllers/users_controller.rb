@@ -26,12 +26,6 @@ class UsersController < ApplicationController
     def destroy
         redirect_if_not_logged_in
         @user = User.find_by_id(params[:id])
-        @user.artists.each do |a|
-            a.delete
-        end
-        @user.photocards.each do |p|
-            p.delete
-        end
         @user.destroy
         redirect_to root_path
     end

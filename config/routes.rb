@@ -4,6 +4,7 @@ Rails.application.routes.draw do
  #Custom
  get '/signup' => 'users#new'
  post '/signup' => 'users#create' #optional, 'post to create' is built in to the default . If using FormFor, that would be the default submission. However if the user signed-up incorrectly and you wanted to re-route them to back and want the url to still say /signup, then you might want the custom route
+ get '/community' => 'users#community'
 
  #Login Route
  get '/login' => 'sessions#new'

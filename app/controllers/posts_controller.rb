@@ -18,8 +18,7 @@ class PostsController < ApplicationController
         if params[:user_id] && @user = User.find_by_id(params[:user_id])
             @posts = @user.posts
         else
-            @error = "Oops. An error occurred. You are now seeing all posts." if params[:user_id]
-            @posts = Post.all
+        @posts = Post.all
         end
     end
 

@@ -30,6 +30,11 @@ class UsersController < ApplicationController
         redirect_to root_path
     end
 
+    def community
+        redirect_if_not_logged_in
+        render :community
+    end
+
     private
 
     def user_params

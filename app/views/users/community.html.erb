@@ -1,0 +1,27 @@
+<h1> Merch Manager's Community </h1>
+
+<div id="Top-users-by-posts">
+    <h3>Top Post Makers</h3>
+    <ol>
+    <% top_users.each do |u|%>
+        <% if u.posts.any? %>
+            <li><%= u.name.capitalize%>: <%= u.posts.count%> - <%= link_to 'See their posts' , user_posts_path(u)%></li>
+        <%end%>
+    <%end%>
+    </ol>
+</div>
+
+
+
+<div id="Top-posts-by-comments">
+
+</div>
+
+<div id="Top-albums-by-favorites">
+
+</div>
+
+<div id="Top-artists-by-photocards">
+
+</div>
+

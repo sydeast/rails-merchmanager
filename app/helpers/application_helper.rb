@@ -8,6 +8,12 @@ module ApplicationHelper
         object.status == "private"
     end
 
-
+    def top_users
+        if User.most_posts.empty?
+            'No Users Yet. Start creating posts to top the list!'
+        else
+            User.most_posts.limit(10)
+        end
+    end
 
 end

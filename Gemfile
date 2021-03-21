@@ -24,6 +24,11 @@ gem 'bcrypt'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'bootstrap', '~> 4.0.0.alpha6'
+gem 'dotenv-rails'
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection'
+
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

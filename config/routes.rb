@@ -9,6 +9,8 @@ Rails.application.routes.draw do
  get '/login' => 'sessions#new'
  post '/login' => 'sessions#create'
 
+ get '/auth/:provider/callback' => 'sessions#google_omniauth'
+
  #Logout Route
  delete '/logout' => 'sessions#destroy'
 

@@ -1,11 +1,14 @@
 <% if !logged_in?%>
 
-<div>
+<div id="welcome-header">
 
-    <h1>Please Login or Register below</h1>
+    <h1>Welcome to Somi's Merch Manager!</h1>
 
 </div>
 
+<div id="welcome-msg">
+    <p>Here you can keep track of all the photocards you collect from your K-Pop albums, light sticks, and more. Create community posts highlighting your favorite comebacks, discuss the latest news breaks, and start card trades! Login and begin your journey...</p>
+</div>
 <div>
     <%= link_to "Register Here" , signup_path %>
         <br>
@@ -16,8 +19,44 @@
 
 <% else %>
 
-<h1>This is the Homepage</h1>
+<h1>Hello, <%= current_user.name.capitalize %>! </h1>
 
-<p>Use the nav bar to do something now!</p>
+<h3>Dashboard</h3>
+
+<p>Your Last 3 Artists: <%= user_artist_links %>
+</p>
+<ul>
+    <% if !current_user.artists.empty? %>
+        <% current_user.artists.limit(3).each do |a|%>
+            <li>
+                <%= link_to a.name, artist_path(a) %>
+            </li>
+            <% end %>
+                <% end %>
+</ul>
+
+<p>Your Last 3 Photocards: <%= user_photocard_links %>
+</p>
+<ul>
+    <% if !current_user.photocards.empty? %>
+        <% current_user.photocards.limit(3).each do |p|%>
+            <li>
+                <%= link_to p.title, photocard_path(p) %>
+            </li>
+            <% end %>
+                <% end %>
+</ul>
+
+<p>Your Top 3 Posts: <%= user_post_links %>
+</p>
+<ol>
+    <% if !current_user.posts.most_comments.empty? %>
+        <% current_user.posts.most_comments.limit(3).each do |p|%>
+            <li>
+                <%= link_to p.title, post_path(p) %>
+            </li>
+            <% end %>
+                <% end %>
+</ol>
 
 <% end %>

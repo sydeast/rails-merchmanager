@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   resources :photocards
   resources :users do
     resources :artists, shallow: true
+    resources :photocards, shallow: true
     resources :posts, shallow: true
   end
   resources :albums, only: [:index, :show]

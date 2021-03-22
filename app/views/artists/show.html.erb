@@ -1,8 +1,8 @@
-
-<div>
+<div id="artist-profile-header">
 <h1><%= @artist.name.capitalize %>'s Profile</h1>
 <% if owner?(@artist) %><p><%= link_to "Edit Artist" , edit_artist_path(@artist) %></p><%end%>
 </div>
+
 <p>Display Status: <%= @artist.status %></p>
 <p>Age: <%= @artist.age %></p>
 <p>Birthday: <%= @artist.birth_date.to_formatted_s(:long_ordinal) %></p>
@@ -26,6 +26,7 @@
 <% if owner?(@artist) %>
 <div>
 <button onclick='addPhotocard()'> Add a new photocard?</button>
+<br>
 <br>
 <div id="photocardForm">
     <%= render "photocards/artists/form" %>

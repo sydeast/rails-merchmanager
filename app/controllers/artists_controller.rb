@@ -1,6 +1,6 @@
 class ArtistsController < ApplicationController
     before_action :redirect_if_not_logged_in
-    before_action :owner?, only: %i[edit destroy]
+
 
 
 
@@ -42,12 +42,12 @@ class ArtistsController < ApplicationController
 
     def edit
         @artist = Artist.find_by_id(params[:id])
-        redirect_to artists_path if !@artist
+        redirect_to artists_path if !@artist  || @artist.user != current_user
     end
 
     def update
         @artist = Artist.find_by_id(params[:id])
-        redirect_to artists_path if !@artist
+        redirect_to artists_path if !@artist  || @artist.user != current_user
         if @artist.update(artist_params)
             redirect_to artist_path(@artist)
         else

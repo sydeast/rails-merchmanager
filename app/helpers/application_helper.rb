@@ -32,5 +32,18 @@ module ApplicationHelper
         end
     end
 
+    def include_artist_path
+        request.path.include?("artists")
+    end
+
+    def include_post_path
+        request.path.include?("posts")
+    end
+
+    def include_user_path
+       if request.path.include?("users")
+            uuid = params[:user_id]
+       end
+    end
 
 end

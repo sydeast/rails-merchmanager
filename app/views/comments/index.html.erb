@@ -1,9 +1,10 @@
-<h1>All Comments</h1>
+<% breadcrumb :comments, @post %>
+<h1>All Comments for <%=@post.title%></h1>
 
 <div>
     <ul>
         <% @comments.each do |c| %>
-            <li><%= c.user.name%> said "<%=c.content%>" published <%= time_ago_in_words(@post.created_at) %> about this post: <%=link_to c.post.title, post_path(c.post_id) %></li>
+            <li><%= c.user.name%> said "<%=c.content%>" published <%= time_ago_in_words(@post.created_at) %> ago.</li>
             <% end %>
     </ul>
 

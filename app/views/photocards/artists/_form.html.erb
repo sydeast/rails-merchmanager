@@ -1,5 +1,6 @@
 <%= form_for [ @artist, @artist.photocards.build ] do |f| %>
 
+<%= f.hidden_field :artist_id %>
 <%= f.label :title %>
 <%= f.text_field :title %>
 <br>

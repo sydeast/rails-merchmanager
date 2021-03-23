@@ -18,12 +18,12 @@
 </div>
 
 <% else %>
+<% breadcrumb :root %>
 
 <div id="welcome-header-known">
 <h1>Hello, <%= current_user.name.capitalize %>! </h1>
 </div>
 <div id="known-msg-dashboard">
-<h3>Dashboard</h3>
 
 <p>Your Last 3 Artists: <%= user_artist_links %>
 </p>

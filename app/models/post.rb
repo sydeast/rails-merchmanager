@@ -9,5 +9,6 @@ class Post < ApplicationRecord
 
   #Scopes
   scope :most_comments, -> {left_joins(:comments).group('posts.id').order('count(comments.post_id) desc')}
+  scope :most_recent, -> {order(created_at: :desc).limit(10)}
 
 end

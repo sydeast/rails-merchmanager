@@ -1,10 +1,11 @@
 <% breadcrumb @post %>
 <div>
     <h1><%= @post.title%></h1>
+    <div class="post_by">
     <h3> By: <%= @post.user.name.capitalize %>, published <%= time_ago_in_words(@post.created_at) %></h3>
-
-    <div>
-        <%= @post.content%>
+    </div>
+    <div id="post_content">
+    <p class="text-center"> <%= @post.content%> </p>
     </div>
 <br>
 <br>

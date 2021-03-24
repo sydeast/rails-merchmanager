@@ -19,12 +19,14 @@
 
 <% else %>
 <% breadcrumb :root %>
-
 <div id="welcome-header-known">
 <h1>Hello, <%= current_user.name.capitalize %>! </h1>
+<p class="text-center"> Here's your Dashboard. Don't forget to check out Community to see what others have been doing lately!</p>
 </div>
-<div id="known-msg-dashboard">
-
+<br>
+<div id="known-msg-dashboard" class="container">
+<div class="row">
+    <div class="col-6 col-md-4">
 <p>Your Last 3 Artists: <%= user_artist_links %>
 </p>
 <ul>
@@ -36,7 +38,8 @@
             <% end %>
                 <% end %>
 </ul>
-
+</div>
+    <div class="col-6 col-md-4">
 <p>Your Last 3 Photocards: <%= user_photocard_links %>
 </p>
 <ul>
@@ -48,7 +51,8 @@
             <% end %>
                 <% end %>
 </ul>
-
+    </div>
+        <div class="col-6 col-md-4">
 <p>Your Top 3 Posts: <%= user_post_links %>
 </p>
 <ol>
@@ -60,5 +64,6 @@
             <% end %>
                 <% end %>
 </ol>
+    </div>
 </div>
 <% end %>

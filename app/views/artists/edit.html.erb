@@ -1,7 +1,7 @@
 <% breadcrumb :edit_artist, @artist %>
 
 <h1>Editing <%=@artist.name.capitalize%></h1>
-
+<%= link_to 'Back' , :back %>
 <%= render "form" , artist: @artist %>
 
 <br>

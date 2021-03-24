@@ -1,11 +1,11 @@
 <% breadcrumb @photocard %>
-
-
-<h1><%= @photocard.title %></h1>
-
-
-<p>Artist: <%= @photocard.artist.name %></p>
+<div class="text-center">
+    <h1><%= @photocard.title %></h1>
+    <p>Artist: <%= @photocard.artist.name %></p>
+</div>
+<% if obj_public?(@photocard) || owner?(@photocard) %>
 <p>Photocard Display Status: <%= @photocard.status %></p>
+<%end%>
 <p>Card Number: <%= @photocard.card_num %> of <%= @photocard.card_setnum %></p>
 <p>Photocard Type: <%= @photocard.card_type %></p>
 <p>Print Type: <%= @photocard.print_type %></p>

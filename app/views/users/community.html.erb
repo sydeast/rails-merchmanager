@@ -1,33 +1,76 @@
 <% breadcrumb :community %>
+<div class="text-center">
+<div id="community-header">
+<h2> Merch Manager's Community!!</h2>
+</div>
 
-<h1> Merch Manager's Community Top Reports</h1>
-
+<div id="community-msg">
+<p>Community's central location. See what your other community members are doing and join in on the fun! Create posts here of the latest news stories or start a photocard trade thread today!</p>
+</div>
+</div>
+<br>
+<div class="container user-active">
+    <div class="row">
+        <div class="col">
+            <h4>Your Musings:</h4>
+            <button type="button" class="btn btn-outline-primary"><%=link_to "Create a Post", new_user_post_path(current_user) %></button>
+            <br>
+            <button type="button" class="btn btn-outline-primary">
+                <%=link_to "See all Your Posts" , user_posts_path(current_user) %>
+            </button>
+        </div>
+        <div class="col">
+            <h4>Latest Community Postings:</h4>
+            <ol>
+                <% Post.most_recent.each do |p| %>
+                <li><%= link_to post_path(p) do %>
+                    "<%= p.title %>" by <%= p.user.name.capitalize%>
+                <%end%>
+                posted <%= time_ago_in_words(p.created_at) %> ago.
+                </li>
+                <%end%>
+            </ol>
+        </div>
+    </div>
+</div>
+<br>
+<div class="container top-billings">
+    <div class="row">
+        <div class="col-6 col-md-4">
 <div id="Top-users-by-posts">
     <h3>Top Post Makers</h3>
     <ol>
     <% top_users.each do |u|%>
         <% if u.posts.any? %>
-            <li><%= u.name.capitalize%>: <%= u.posts.count%> - <%= link_to 'See their posts' , user_posts_path(u)%></li>
+            <li><%= link_to user_posts_path(u) do %>
+                <%= u.name.capitalize%>
+                <%end%>
+                : <%= u.posts.count%> post(s)</li>
+
         <%end%>
     <%end%>
     </ol>
 </div>
+</div>
 
-
-
+    <div class="col-6 col-md-4">
 <div id="Top-posts-by-comments">
     <h3>Most Popular Posts</h3>
     <ol>
         <% top_posts.each do |p|%>
             <% if p.comments.any?%>
-            <li><%=p.title%> - <%=p.user.name.capitalize%>: <%=p.comments.count%> comment(s)</li>
+            <li><%= link_to post_path(p) do %>
+                <%=p.title%> - <%=p.user.name.capitalize%>
+                <%end%>: <%=p.comments.count%> comment(s)</li>
             <% end %>
         <% end %>
     </ol>
 </div>
+</div>
 
+    <div class="col col-lg-4">
 <div id="Top-artists-by-photocards">
-    <h3>Artists with Most Photocards</h3>
+    <h3>Artists w/Most Photocards</h3>
     <ol>
         <% top_artists.each do |a|%>
             <% if a.photocards.any?%>
@@ -39,4 +82,5 @@
     </ol>
     </div>
 </div>
-
+    </div>
+</div>

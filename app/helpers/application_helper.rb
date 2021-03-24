@@ -46,4 +46,8 @@ module ApplicationHelper
        end
     end
 
+    def obj_public?(object)
+        object.status == "public"
+    end
+
 end

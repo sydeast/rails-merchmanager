@@ -1,4 +1,4 @@
-<div>
+<div class="new-photocard-form">
 <%= form_for(photocard) do |f| %>
 
 <%= f.label :title %>
@@ -10,7 +10,6 @@
 <%= f.label :artist %>
 <%= f.collection_select :artist_id, current_user.artists, :id, :name, required: true %>
 </div>
-<br>
 <%= f.label :card_setnum, "How many cards in the set?" %>
 <%= f.number_field :card_setnum, in: 1..15, step: 1 %>
 <br>

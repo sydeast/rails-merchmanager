@@ -23,4 +23,8 @@ class User < ApplicationRecord
         end
     end
 
+    def self.most_photocards
+        joins(:photocards).where("photocards.created_at >= ?", 1.week.ago.utc).group('user_id').order("count(user_id) DESC").limit(10)
+    end
+
 end

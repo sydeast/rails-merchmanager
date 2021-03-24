@@ -89,6 +89,11 @@ crumb :community do
   parent :root
 end
 
+crumb :most_photocards do
+  link "This Weeks Top Creators", users_most_photocards_path
+  parent :community
+end
+
 
 # crumb :projects do
 #   link "Projects", projects_path

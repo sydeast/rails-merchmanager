@@ -12,7 +12,7 @@ module ApplicationHelper
         if User.most_posts.empty?
             'No Users Yet. Start creating posts to top the list!'
         else
-            User.most_posts.limit(10)
+            User.most_posts.limit(5)
         end
     end
 
@@ -20,7 +20,7 @@ module ApplicationHelper
         if Post.most_comments.empty?
             'No comments posts yet. Start commenting!'
         else
-            Post.most_comments.limit(10)
+            Post.most_comments.limit(5)
         end
     end
 
@@ -28,7 +28,7 @@ module ApplicationHelper
         if Artist.most_photocards.empty?
             'No artists with photocards yet. Start adding photocards to artists now!'
         else
-            Artist.most_photocards.limit(10)
+            Artist.most_photocards.limit(5)
         end
     end
 

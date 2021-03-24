@@ -35,6 +35,10 @@ class UsersController < ApplicationController
         render :community
     end
 
+    def most_photocards
+        @users = User.most_photocards
+    end
+
     private
 
     def user_params

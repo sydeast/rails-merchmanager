@@ -34,12 +34,12 @@ class PhotocardsController < ApplicationController
 
     def edit
         @photocard = Photocard.find_by_id(params[:id])
-        redirect_to photocards_path if !@photocard
+        redirect_to photocards_path if !@photocard   || @photocard.user != current_user
     end
 
     def update
         @photocard = Photocard.find_by_id(params[:id])
-        redirect_to photocards_path if !@photocard
+        redirect_to photocards_path if !@photocard   || @photocard.user != current_user
         if @photocard.update(photocard_params)
             redirect_to photocard_path(@photocard)
         else

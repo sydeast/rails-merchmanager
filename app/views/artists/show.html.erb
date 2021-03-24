@@ -1,4 +1,5 @@
 <% breadcrumb :artist, @artist %>
+
 <div id="artist-profile-header"  class="text-center">
 <h1><%= @artist.name.capitalize %>'s Profile</h1>
 <% if owner?(@artist) %><p><%= link_to "Edit Artist" , edit_artist_path(@artist) %></p><%end%>
@@ -32,7 +33,7 @@
 <br>
 <br>
 <div id="photocardForm">
-    <%= render "photocards/artists/form" %>
+    <%= render partial: "photocards/artists/form" %>
 </div>
 </div>
 <br>

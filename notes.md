@@ -47,8 +47,4 @@ name - string
 
 
 Things to Do:
-* fix user validation on artist/photocard deletions
-* hide edit & delete if not the owner
-* Need to create public view of artists/photocards
-* Fix show/index redirects to see our own items
-
+* make validations DRY on artist/photocard deletions

@@ -1,9 +1,6 @@
 class ArtistsController < ApplicationController
     before_action :redirect_if_not_logged_in
 
-
-
-
     def index
         if session[:user_id] && current_user && current_user.artists.any?
             @artists = current_user.artists.listed_by_name
@@ -68,11 +65,11 @@ class ArtistsController < ApplicationController
         params.require(:artist).permit(:name, :birth_date, :other_name, :age, :position, :company, :artist_notes, :album_id, :status,album_attributes: [:title, :release_date])
     end
 
-    def owner?
-        if @artist != current_user.artists
-            redirect_back fallback_location: artists_path, notice: 'User is not owner'
-        end
-    end
+    # def owner?
+    #     if @artist.user != current_user
+    #         redirect_back fallback_location: artists_path, notice: 'User is not owner'
+    #     end
+    # end
 
 
 end

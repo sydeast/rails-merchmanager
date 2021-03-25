@@ -1,0 +1,10 @@
+<% breadcrumb @photocard %>
+
+<h1>Editing <%= @photocard.title.capitalize %></h1>
+<%= link_to 'Back' , :back %>
+
+<%= render "form" , photocard: @photocard %>
+
+<br>
+
+<%= link_to "Delete Photocard" , photocard_path(@photocard), method: "delete" , data: { confirm: "Are you sure?" } %>

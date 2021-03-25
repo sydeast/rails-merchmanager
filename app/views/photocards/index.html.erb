@@ -1,0 +1,24 @@
+<% breadcrumb :photocards %>
+<div id="photocard-index-header">
+    <div class="row justify-content-between">
+        <div class="col-8">
+            <h1> All Photocards for You</h1>
+        </div>
+        <div class="col">
+            <button type="button" class="btn btn-outline-secondary create-photocard">
+                <%=link_to "Create a New Photocard" , new_user_photocard_path(current_user) %>
+            </button>
+        </div>
+    </div>
+</div>
+
+
+<ol class="text-center">
+    <% @photocards.each do |p|%>
+        <li>
+            <%= link_to photocard_path(p) do %>
+            <%= p.title %> - <%= p.artist.name%>
+            <% end %>
+        </li>
+        <% end %>
+</ol>

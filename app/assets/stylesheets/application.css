@@ -13,3 +13,49 @@
  *= require_tree .
  *= require_self
  */
+#photocardForm {
+  display:none;
+}
+
+body {
+    background-color: rgb(248, 246, 244);
+    padding: 70px 15px 15px 15px;
+    z-index: 0;
+}
+
+.somi {
+
+  background-color: #b49af1;
+}
+
+.navbar-dark {
+    background-color: #5b38aa;
+}
+
+.bd-navbar .navbar-nav .nav-link{
+  color: rgba(255,255,255,0.85);
+}
+
+div.post_by {
+  text-indent: 30%;
+}
+
+p.artists_descr {
+  text-indent: 70px;
+}
+#community-msg {
+  text-align: center;
+  padding-left: 150px;
+  padding-right: 150px;
+}
+
+div.new-artist-form {
+  text-align: center;
+}
+div.new-photocard-form {
+  text-align: center;
+}
+
+/*
+ *= require jquery-ui
+ */

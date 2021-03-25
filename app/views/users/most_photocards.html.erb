@@ -1,0 +1,13 @@
+<% breadcrumb :most_photocards %>
+
+<h2>The Last <%= time_ago_in_words(1.week.ago.utc) %> Top Photocard Creators:</h2>
+<p>Where do you chart?</p>
+<div class="text-center">
+    <ol>
+<% @users.each do |u| %>
+<li>
+    <%=u.name.capitalize%> - <%=u.photocards.count%> photocard(s)
+</li>
+<%end%>
+</ol>
+</div>

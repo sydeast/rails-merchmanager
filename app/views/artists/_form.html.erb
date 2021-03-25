@@ -1,0 +1,44 @@
+<div class="new-artist-form">
+<%= form_for(artist) do |f| %>
+
+<%= f.label :name %>
+<%= f.text_field :name, required: true%>
+<br>
+<div data-toggle="tooltip" data-placement="top"
+    title="Artist may by default display as public unless marked as 'Private'">
+<%= f.label :status, "Display Status?" %>
+<%= f.select :status, ['public', 'private' ] %>
+</div>
+<%= f.label :birth_date %>
+<%= f.date_select :birth_date, start_year: Date.today.year - 40, end_year: Date.today.year - 5 %>
+<br>
+<%= f.label :other_name, "Stagename and/or Group name:" %>
+<%= f.text_field :other_name %>
+<br>
+<%= f.label :position %>
+<%= f.text_field :position %>
+<br>
+<%= f.label :company %>
+<%= f.text_field :company %>
+<br>
+<div data-toggle="tooltip" data-placement="top"
+    title="Please select or create an favorite album to associate with this artist.">
+<%= f.label "What is your favorite album of theirs:" %>
+<%= f.collection_select :album_id, Album.all, :id, :title, include_blank: true, required: true %>
+    <p>Or create a new album if not listed:
+    <%= f.fields_for :album do |a|%>
+    <%= a.text_field :title%>
+    <%= a.date_field :release_date%>
+    <% end %>
+    </p>
+</div>
+<div data-toggle="tooltip" data-placement="top"
+    title="Notes will not be displayed to the public.">
+<%= f.label :artist_notes, "Notes:" %>
+<%= f.text_area :artist_notes %>
+</div>
+<br>
+<%= f.submit %>
+<br>
+<% end %>
+</div>

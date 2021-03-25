@@ -1,0 +1,6 @@
+
+<h2><%=@comment.content%> - <%= @comment.user.name%></h2>
+
+<div>
+    <h4>Read the post here: <%= link_to @comment.post.title, post_path(@comment.post_id)%></h4>
+</div>

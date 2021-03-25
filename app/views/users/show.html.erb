@@ -1,0 +1,14 @@
+<div>
+    <h1 class="text-center">Account Settings for <%= current_user.name.capitalize %></h1>
+</div>
+
+
+<p>Later you will be able to update your name, email, and password. For now, you may delete you account (and with it: all associated artists, photocards, etc) or logout. Look out for more features coming soon!</p>
+
+
+<%= link_to "Delete Account" , user_path(@user), method: "delete" ,  data: { confirm: "Are you sure?" } %>
+
+<br>
+<br>
+
+<%= link_to "Logout" , logout_path, method: "delete" %>

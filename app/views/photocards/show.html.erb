@@ -1,0 +1,21 @@
+<% breadcrumb @photocard %>
+<div class="text-center">
+    <h1><%= @photocard.title %></h1>
+    <p>Artist: <%= @photocard.artist.name %></p>
+</div>
+<% if obj_public?(@photocard) || owner?(@photocard) %>
+<p>Photocard Display Status: <%= @photocard.status %></p>
+<%end%>
+<p>Card Number: <%= @photocard.card_num %> of <%= @photocard.card_setnum %></p>
+<p>Photocard Type: <%= @photocard.card_type %></p>
+<p>Print Type: <%= @photocard.print_type %></p>
+<p>Source: <%= @photocard.source_type %></p>
+<p>Source Name: <%= @photocard.source_name %></p>
+<% if owner?(@photocard) %>
+<p>Notes: <%= @photocard.card_notes %></p>
+<br>
+<div>
+<%= link_to "Edit Photocard" , edit_photocard_path(@photocard) %>
+</div>
+<% end %>
+

@@ -1,0 +1,45 @@
+<% breadcrumb @post %>
+<div>
+    <h1><%= @post.title%></h1>
+    <div class="post_by">
+    <h3> By: <%= @post.user.name.capitalize %>, published <%= time_ago_in_words(@post.created_at) %></h3>
+    </div>
+    <div id="post_content">
+    <p class="text-center"> <%= @post.content%> </p>
+    </div>
+<br>
+<br>
+<br>
+
+
+
+<h4>Add a comment:</h4>
+<%= render 'comments/posts/form' , post: @post, user: current_user %>
+<br>
+
+<h4>Comments:</h4>
+    <div>
+
+        <% if @post.comments.any? && !@post.comments[0].new_record? %>
+            <ul>
+            <% @post.comments[0..-2].last(10).reverse.each do |c| %>
+            <li><strong><%= c.user.name%></strong> says "<%= c.content%>" posted <%= time_ago_in_words(c.created_at) %>.</li>
+                <% end %>
+            </ul>
+            <p>
+                <%= link_to 'See All Comments' , post_comments_path(@post)%>
+            </p>
+        <% else %>
+
+        <p> No Comments Yet!</p>
+
+
+        <% end %>
+</div>
+
+<% if owner?(@post) %>
+<div>
+<%= link_to "Delete Post" , post_path(@post), method: "delete" , data: { confirm: "Are you sure?" } %>
+</div>
+<% end %>
+</div>

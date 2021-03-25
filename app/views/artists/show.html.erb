@@ -1,0 +1,48 @@
+<% breadcrumb :artist, @artist %>
+
+<div id="artist-profile-header"  class="text-center">
+<h1><%= @artist.name.capitalize %>'s Profile</h1>
+<% if owner?(@artist) %><p><%= link_to "Edit Artist" , edit_artist_path(@artist) %></p><%end%>
+</div>
+
+<% if obj_public?(@artist) || owner?(@artist) %>
+<p>Display Status: <%= @artist.status %></p>
+<%end%>
+<p>Age: <%= @artist.age %></p>
+<p>Birthday: <%= @artist.birth_date.to_formatted_s(:long_ordinal) %></p>
+<p>Other Name: <%= @artist.other_name %></p>
+<p>Position: <%= @artist.position %></p>
+<p>Company: <%= @artist.company %></p>
+<p>Your favorite album: <%= @artist.album.title %> - released: <%= @artist.album.release_date %> </p>
+
+<p>
+    <% if !@artist.photocards.empty? %>
+    <%= @artist.name.capitalize %>'s Photocards:
+        <ul>
+            <% @artist.photocards.each do |p|%>
+                <li>
+                    <%= link_to p.title, artist_photocard_path(@artist, p) %>
+                </li>
+                <% end %>
+        </ul>
+    <% end %>
+</p>
+<% if owner?(@artist) %>
+<div>
+<button onclick='addPhotocard()'> Add a new photocard?</button>
+<br>
+<br>
+<div id="photocardForm">
+    <%= render partial: "photocards/artists/form" %>
+</div>
+</div>
+<br>
+<p>Notes: <%= @artist.artist_notes %>
+</p>
+<% end %>
+
+    <script>
+        function addPhotocard() {
+            $('#photocardForm').show();
+        };
+    </script>

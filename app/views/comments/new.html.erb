@@ -1,0 +1,14 @@
+<div>
+<% if @comment.post %>
+<h1>New Comment for <%= @comment.post.title.capitalize %></h1>
+<% else %>
+<h1>New Comment </h1>
+<% end %>
+</div>
+
+
+
+<div>
+    <%= render 'comments/form' %>
+
+</div>

@@ -1,0 +1,18 @@
+<%= form_for [ @artist, @artist.photocards.build ] do |f| %>
+
+<%= f.hidden_field :artist_id %>
+<%= f.label :title %>
+<%= f.text_field :title %>
+<br>
+<br>
+<%= f.label :card_type, "What type of photocard?" %>
+<%= f.select :card_type, ["Standard", "Hologram" , "Transparent" , "Polaroid", "Lomo" , "ID" ]%>
+<br>
+<br>
+<%= f.label :print_type %>
+<%= f.select :print_type, ["Official Print", "Unofficial Print" , "Reprint", "Fake" , "Other" ] %>
+<br>
+<br>
+<%= f.submit 'Continue to Submit' %>
+
+<% end %>

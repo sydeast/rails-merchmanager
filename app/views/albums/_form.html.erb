@@ -1,0 +1,13 @@
+<%= form_with model: [ @artist, @artist.user.albums.build ] do |form| %>
+    <p>
+        <%= form.label :title %><br>
+        <%= form.text_field :title %>
+    </p>
+    <p>
+        <%= form.label :release_date %><br>
+        <%= form.date_field :release_date %>
+    </p>
+    <p>
+        <%= form.submit %>
+    </p>
+    <% end %>

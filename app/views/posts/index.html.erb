@@ -1,0 +1,9 @@
+<% breadcrumb :posts %>
+
+<h1> All Posts</h1>
+
+<ul>
+    <% @posts.each do |p|%>
+        <li><%= link_to p.title, post_path(p) %> by <%=p.user.name.capitalize%> posted <%= time_ago_in_words(p.created_at) %> ago.</li>
+    <% end %>
+</ul>

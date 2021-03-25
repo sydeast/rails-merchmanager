@@ -1,0 +1,8 @@
+<% breadcrumb :edit_artist, @artist %>
+
+<h1>Editing <%=@artist.name.capitalize%></h1>
+<%= link_to 'Back' , :back %>
+<%= render "form" , artist: @artist %>
+
+<br>
+<%= link_to "Delete Artist" , artist_path(@artist), method: "delete" , data: { confirm: "Are you sure?" } %>

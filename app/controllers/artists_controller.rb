@@ -27,6 +27,7 @@ class ArtistsController < ApplicationController
         if @artist.save
             redirect_to artist_path(@artist)
         else
+            @error = "Uh Oh! Something went wrong. Make sure your artist has a Name and an Album before preoceeding or try again later!"
             render :new
         end
     end
@@ -48,6 +49,7 @@ class ArtistsController < ApplicationController
         if @artist.update(artist_params)
             redirect_to artist_path(@artist)
         else
+            @error = "Uh Oh! Something went wrong. Make sure your artist has a Name and an Album before preoceeding or try again later!"
             render :edit
         end
     end

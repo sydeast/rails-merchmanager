@@ -1,6 +1,7 @@
 <% breadcrumb @post %>
+<%= link_to 'Back' , :back %>
 <div>
-    <h1><%= @post.title%></h1>
+    <h1 class="text-center"><%= @post.title%></h1>
     <div class="post_by">
     <h3> By: <%= @post.user.name.capitalize %>, published <%= time_ago_in_words(@post.created_at) %></h3>
     </div>

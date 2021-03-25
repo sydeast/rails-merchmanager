@@ -2,7 +2,7 @@ class Artist < ApplicationRecord
   #Associations
   belongs_to :user
   belongs_to :album
-  has_many :photocards
+  has_many :photocards, dependent: :destroy
 
   #Validations
   validates :name, :album, presence: true

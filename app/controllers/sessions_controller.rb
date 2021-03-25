@@ -20,14 +20,19 @@ class SessionsController < ApplicationController
         end
     end
 
-    def google_omniauth
-        user = User.from_omniauth(request.env['omniauth.auth'])
+    def omniauth
+        user = User.from_omniauth(auth)
         if user.valid?
             session[:user_id] = user.id
             redirect_to root_path
         else
             flash[:message] = "Oops! An error occurred during login. Please try again."
-            redirect_to '/login'
+            redirect_to login_path
         end
+    end
+
+    private
+    def auth
+        request.env['omniauth.auth']
     end
 end

@@ -1,15 +1,18 @@
 <% breadcrumb @post %>
 <h1>New Posts </h1>
+<%= link_to 'Back' , :back %>
 
+<div class="text-center">
 <%= form_for(@post) do |f| %>
 
     <%= f.label :title %>
     <%= f.text_field :title %>
-
+    <br>
     <%= f.label :content %>
-    <%= f.text_area :content %>
-
+    <%= f.text_area :content, rows: 10, style: 'width:100%;' %>
+    <br>
     <%= f.submit %>
 
 
 <% end %>
+</div>

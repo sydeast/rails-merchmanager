@@ -2,10 +2,11 @@ class PhotocardsController < ApplicationController
     before_action :redirect_if_not_logged_in
 
     def index
-        if session[:user_id] && current_user
+        if session[:user_id] && current_user && current_user.photocards.any?
             @photocards = current_user.photocards
         else
-            @error = "Oops, you don't have any photocards yet. Please click the link above to create some now."
+            @error = "Oops, you don't have any photocards yet. You are seeing public photocards. Try adding some of your own now!"
+            @photocards = Photocard.public_viewing
         end
     end
 
@@ -23,6 +24,7 @@ class PhotocardsController < ApplicationController
         if @photocard.save
             redirect_to photocard_path(@photocard)
         else
+            @error = "Uh Oh! Something went wrong. Make sure your photocard has a title and an artist before preoceeding or try again later!"
             render :new
         end
     end

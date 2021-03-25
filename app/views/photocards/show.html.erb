@@ -3,6 +3,7 @@
     <h1><%= @photocard.title %></h1>
     <p>Artist: <%= @photocard.artist.name %></p>
 </div>
+<%= link_to 'Back' , :back %>
 <% if obj_public?(@photocard) || owner?(@photocard) %>
 <p>Photocard Display Status: <%= @photocard.status %></p>
 <%end%>

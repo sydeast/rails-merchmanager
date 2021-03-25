@@ -10,7 +10,7 @@ class UsersController < ApplicationController
             #log them in
             session[:user_id] = @user.id
             #redirect to the show page
-            redirect_to @user
+            redirect_to root_path
         else
             render :new
         end

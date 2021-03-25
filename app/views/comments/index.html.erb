@@ -4,7 +4,7 @@
 <div>
     <ul>
         <% @comments.each do |c| %>
-            <li><%= c.user.name%> said "<%=c.content%>" published <%= time_ago_in_words(@post.created_at) %> ago.</li>
+            <li><%= c.user.name%> said "<%=c.content%>" published <%= time_ago_in_words(c.created_at) %> ago.</li>
             <% end %>
     </ul>
 
